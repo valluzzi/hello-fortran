@@ -1,0 +1,104 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "setvars",
+            "type": "shell",
+            "command": "setvars"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "Remove-Item",
+            "args": [
+                "-Recurse", 
+                "-Force",
+                "-Path:build\\*,*.exe",
+            ],
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "ifort",
+            "args": [
+                "src/*.f90", 
+                "/nologo",
+                "/MP",
+                "/O2",
+                "/Qparallel",
+                "/assume:buffered_io",
+                "/Qipo",
+                "/fpp",
+                "/I\".\\include\"",
+                "/libs:static",
+                "/threads",
+                "/module:build\\",
+                "/object:build\\",
+                "/c"
+            ],
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "link",
+            "type": "shell",
+            "command": "ifort",
+            "args": [
+                "build\\*.obj",
+                //"gdal_i.lib",
+                "/link",
+                "/LIBPATH:C:\\Program Files (x86)\\Intel\\oneAPI\\compiler\\2021.4.0\\windows\\compiler\\lib\\intel64",
+                "/LIBPATH:C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\lib\\x64",
+                "/LIBPATH:C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64",
+                "/LIBPATH:C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\ucrt\\x64",
+                "/LIBPATH:.\\lib",
+                //"/IMPLIB:.\\lib\\gdal_i.lib",
+                "/SUBSYSTEM:CONSOLE",
+                //"/STACK:2000000000",
+                "/OUT:hello-world.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "dependsOn": [
+                "compile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": ".\\hello-world.exe",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "link"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}
