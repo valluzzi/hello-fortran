@@ -1,0 +1,55 @@
+{
+  "id": "component-registry",
+  "version": "1.0.0",
+  "description": "Registry of discrete functional units in fortran-lzw project.",
+  "status": "stable",
+  "components": [
+    {
+      "id": "main-program",
+      "name": "Hello Fortran Main",
+      "type": "executable",
+      "path": "src/main.f90",
+      "description": "Simple Hello World program",
+      "runtime": "fortran",
+      "version": "0.1.0",
+      "dependencies": [],
+      "entry_point": "program HelloWorld",
+      "exports": []
+    },
+    {
+      "id": "build-system",
+      "name": "CMake Build System",
+      "type": "infrastructure",
+      "description": "CMake-based build configuration (present in repo)",
+      "files": [
+        {
+          "name": "CMakeLists.txt",
+          "purpose": "Primary CMake configuration file"
+        },
+        {
+          "name": "compile.sh",
+          "platform": "unix",
+          "purpose": "Unix/Linux/macOS build script wrapper for CMake"
+        }
+      ],
+      "outputs": {
+        "executable": "hello-fortran",
+        "build_directory": "build/",
+        "module_directory": "build/modules/"
+      }
+    },
+    {
+      "id": "context-registry",
+      "name": "Context Registry",
+      "type": "orchestration",
+      "path": "context/index.json",
+      "description": "Master orchestrator for framework topology",
+      "references": [
+        "engines.json",
+        "languages.json",
+        "api-references.json",
+        "components.json"
+      ]
+    }
+  ]
+}

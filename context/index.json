@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "master-orchestrator",
+  "version": "1.0.0",
+  "description": "Master configuration for fortran-lzw - Fortran implementation of LZW compression algorithm.",
+  "status": "stable",
+  "framework": {
+    "engines": {
+      "id": "engine-registry",
+      "file": "engines.json",
+      "description": "Execution environments (Fortran, CMake, Build Tools)"
+    },
+    "components": {
+      "id": "component-registry",
+      "file": "components.json",
+      "description": "Discrete functional units (main program, LZW modules, utility modules, build system)"
+    }
+  },
+  "knowledge_base": [
+    {
+      "id": "languages",
+      "file": "languages.json",
+      "description": "Programming language preferences and priority levels"
+    },
+    {
+      "id": "api-references",
+      "file": "api-references.json",
+      "description": "External API references, standards, and compression specifications"
+    }
+  ],
+  "infrastructure": {
+    "platform": "cross-platform",
+    "build_system": "cmake",
+    "compiler": ["gfortran", "ifort"],
+    "build_scripts": [
+      {
+        "name": "compile.sh",
+        "platform": "unix",
+        "tool": "cmake"
+      }
+    ]
+  },
+  "project": {
+    "name": "hello-fortran",
+    "description": "Minimal Hello Fortran example repository",
+    "version": "0.1.0",
+    "language": "Fortran 2018",
+    "algorithm": null,
+    "executable": "hello-fortran"
+  }
+}

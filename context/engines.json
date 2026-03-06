@@ -1,0 +1,69 @@
+{
+  "id": "engine-registry",
+  "version": "1.0.0",
+  "status": "stable",
+  "description": "Registry of execution environments used in fortran-lzw project.",
+  "engines": [
+    {
+      "id": "cmake",
+      "name": "CMake Build System",
+      "command": "cmake",
+      "version": "3.15+",
+      "purpose": "Cross-platform build system generator",
+      "provider": "cmake.org",
+      "configuration": {
+        "source_dir": ".",
+        "build_dir": "build/",
+        "build_types": ["Debug", "Release", "RelWithDebInfo"],
+        "default_build_type": "Release"
+      }
+    },
+    {
+      "id": "gfortran",
+      "name": "GNU Fortran Compiler",
+      "command": "gfortran",
+      "version": "latest",
+      "purpose": "Primary Fortran compiler (GCC)",
+      "provider": "gcc",
+      "standard": "Fortran 2018",
+      "flags": {
+        "common": "-Wall -Wextra -Wimplicit-interface -fimplicit-none -cpp",
+        "debug": "-O0 -g -fcheck=all -fbacktrace",
+        "release": "-O3 -march=native -funroll-loops",
+        "relwithdebinfo": "-O2 -g -fbacktrace"
+      },
+      "configuration": {
+        "source_dir": "src/",
+        "output": "hello-fortran",
+        "module_dir": "build/modules/",
+        "object_dir": "build/"
+      }
+    },
+    {
+      "id": "intel-fortran",
+      "name": "Intel Fortran Compiler",
+      "command": "ifort",
+      "version": "latest",
+      "purpose": "Alternative high-performance Fortran compiler (Intel oneAPI)",
+      "provider": "intel-oneapi",
+      "standard": "Fortran 2018",
+      "flags": {
+        "common": "-warn all -fpp",
+        "debug": "-O0 -g -check all -traceback",
+        "release": "-O3 -xHost -ipo",
+        "relwithdebinfo": "-O2 -g -traceback"
+      },
+      "configuration": {
+        "source_dir": "src/",
+        "output": "fortran-lzw",
+        "module_dir": "build/modules/",
+        "object_dir": "build/"
+      },
+      "setup": {
+        "windows": "C:\\Program Files (x86)\\Intel\\oneAPI\\setvars.bat",
+        "unix": "/opt/intel/oneapi/setvars.sh"
+      }
+    }
+  ]
+}
+   

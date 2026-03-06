@@ -1,0 +1,48 @@
+{
+  "id": "languages",
+  "version": "1.0.0",
+  "description": "Programming language preferences and priority levels for project development.",
+  "status": "stable",
+  "languages": [
+    {
+      "name": "Fortran",
+      "alias": ["f90", "fortran90", "fortran2018"],
+      "priority": "preferred",
+      "version": "Fortran 2018",
+      "compiler": ["GNU Fortran (gfortran)", "Intel Fortran (ifort)"],
+      "provider": ["GCC", "Intel oneAPI"],
+      "notes": "Primary language for LZW compression algorithm implementation"
+    },
+    {
+      "name": "CMake",
+      "alias": ["cmake"],
+      "priority": "preferred",
+      "version": "3.15+",
+      "notes": "Cross-platform build system configuration"
+    },
+    {
+      "name": "JSON",
+      "alias": ["config"],
+      "priority": "preferred",
+      "notes": "Configuration format for context files and metadata"
+    },
+    {
+      "name": "Markdown",
+      "alias": ["md", "docs"],
+      "priority": "preferred",
+      "notes": "Documentation format following CommonMark specification"
+    },
+    {
+      "name": "Shell",
+      "alias": ["sh", "bash"],
+      "priority": "allowed",
+      "notes": "Unix/Linux/macOS build wrapper scripts (compile.sh)"
+    }
+  ],
+  "priorityLevels": {
+    "preferred": "First choice for new development",
+    "allowed": "Acceptable when justified",
+    "discouraged": "Avoid unless legacy requirement",
+    "never-use": "Explicitly prohibited"
+  }
+}

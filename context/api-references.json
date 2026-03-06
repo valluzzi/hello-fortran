@@ -1,0 +1,53 @@
+{
+  "id": "api-references",
+  "version": "1.0.0",
+  "description": "External API references, standards, and specifications for fortran-lzw project.",
+  "status": "stable",
+  "specifications": [
+    {
+      "id": "fortran-standard",
+      "name": "Fortran 2018 Standard",
+      "type": "standard",
+      "description": "ISO/IEC 1539-1:2018 Fortran language specification",
+      "url": "https://www.iso.org/standard/72320.html",
+      "version": "2018",
+      "notes": "Language standard for source code compliance"
+    },
+    {
+      "id": "lzw-algorithm",
+      "name": "LZW Compression Algorithm",
+      "type": "algorithm",
+      "description": "Lempel-Ziv-Welch lossless data compression algorithm",
+      "url": "https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch",
+      "year": "1984",
+      "authors": ["Abraham Lempel", "Jacob Ziv", "Terry Welch"],
+      "notes": "Dictionary-based compression algorithm used in GIF, TIFF, and PDF formats"
+    },
+    {
+      "id": "cmake",
+      "name": "CMake Build System",
+      "type": "build-tool",
+      "description": "Cross-platform build system generator",
+      "url": "https://cmake.org/",
+      "version": "3.15+",
+      "purpose": "Build system for cross-platform compilation"
+    },
+    {
+      "id": "gfortran",
+      "name": "GNU Fortran Compiler",
+      "type": "compiler",
+      "description": "GNU Fortran compiler from GCC collection",
+      "url": "https://gcc.gnu.org/fortran/",
+      "purpose": "Cross-platform Fortran compiler"
+    },
+    {
+      "id": "intel-fortran",
+      "name": "Intel Fortran Compiler",
+      "type": "compiler",
+      "description": "Intel Fortran compiler from oneAPI toolkit",
+      "url": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html",
+      "version": "oneAPI",
+      "purpose": "Alternative high-performance compilation toolchain"
+    }
+  ]
+}
