@@ -30,4 +30,6 @@
 *.exe
 *.out
 *.app
+hello-fortran
 build/
+local_install/

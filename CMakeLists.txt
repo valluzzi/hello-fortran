@@ -34,4 +34,10 @@ set(VERSION_IN ${CMAKE_SOURCE_DIR}/version.in)
 set(VERSION_F90 ${CMAKE_BINARY_DIR}/version.f90)
 configure_file(${VERSION_IN} ${VERSION_F90} @ONLY)
 
-add_executable(hello src/main.f90 ${VERSION_F90})
+file(GLOB_RECURSE SRC_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.f90")
+list(APPEND SRC_SOURCES ${VERSION_F90})
+add_executable(hello-fortran ${SRC_SOURCES})
+
+# Install target
+install(TARGETS hello-fortran
+	RUNTIME DESTINATION bin)
