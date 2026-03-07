@@ -1,0 +1,36 @@
+module module_version
+  implicit none
+  private
+
+  character(len=64), parameter :: c_version = "@PROJECT_VERSION@"
+  character(len=64), parameter :: c_git_commit = "@GIT_COMMIT@"
+  character(len=64), parameter :: c_build_date = "@BUILD_DATE@"
+
+  public :: get_version, get_git_commit, get_build_date, get_version_string
+
+contains
+  function get_version() result(s)
+    character(len=:), allocatable :: s
+    s = trim(c_version)
+  end function get_version
+
+  function get_git_commit() result(s)
+    character(len=:), allocatable :: s
+    s = trim(c_git_commit)
+  end function get_git_commit
+
+  function get_build_date() result(s)
+    character(len=:), allocatable :: s
+    s = trim(c_build_date)
+  end function get_build_date
+
+  function get_version_string() result(s)
+    character(len=:), allocatable :: s
+    if (len_trim(c_git_commit) > 0) then
+      s = trim(get_version()) // ' (' // trim(get_git_commit()) // ') built ' // trim(get_build_date())
+    else
+      s = trim(get_version()) // ' built ' // trim(get_build_date())
+    end if
+  end function get_version_string
+
+end module module_version
