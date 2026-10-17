@@ -21,7 +21,6 @@ print_info() {
 print_step() {
     echo -e "${BLUE}[STEP]${NC} $1"
 }
-
 print_warn() {
     echo -e "${YELLOW}[WARN]${NC} $1"
 }
